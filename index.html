@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World PWA</title>
+    <meta name="description" content="A simple Hello World Progressive Web App">
+    <meta name="theme-color" content="#2196F3">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32x32.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌍 Hello World!</h1>
+            <p class="subtitle">Welcome to your Progressive Web App</p>
+        </header>
+        
+        <main>
+            <div class="card">
+                <h2>PWA Features</h2>
+                <ul>
+                    <li>✅ Installable on devices</li>
+                    <li>✅ Works offline</li>
+                    <li>✅ Responsive design</li>
+                    <li>✅ App-like experience</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2>Installation</h2>
+                <p>Look for the "Install App" button in your browser or the install prompt!</p>
+                <button id="installBtn" class="install-btn" style="display: none;">
+                    📱 Install App
+                </button>
+            </div>
+            
+            <div class="status">
+                <p id="status">Loading...</p>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Built with ❤️ as a Progressive Web App</p>
+        </footer>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
