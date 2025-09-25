@@ -1,0 +1,576 @@
+{
+  "version": "1.0.0",
+  "totalLevels": 50,
+  "levels": [
+    {
+      "id": 1,
+      "file": "level-001.json",
+      "name": "Level 1 - Puzzle 25",
+      "difficulty": "medium",
+      "unlocked": true,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 2,
+      "file": "level-002.json",
+      "name": "Level 2 - Puzzle 28",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 3,
+      "file": "level-003.json",
+      "name": "Level 3 - Puzzle 29",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 4,
+      "file": "level-004.json",
+      "name": "Level 4 - Puzzle 32",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 5,
+      "file": "level-005.json",
+      "name": "Level 5 - Puzzle 34",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 6,
+      "file": "level-006.json",
+      "name": "Level 6 - Puzzle 37",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 7,
+      "file": "level-007.json",
+      "name": "Level 7 - Puzzle 38",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 8,
+      "file": "level-008.json",
+      "name": "Level 8 - Puzzle 39",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 9,
+      "file": "level-009.json",
+      "name": "Level 9 - Puzzle 40",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 10,
+      "file": "level-010.json",
+      "name": "Level 10 - Puzzle 50",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 11,
+      "file": "level-011.json",
+      "name": "Level 11 - Puzzle 51",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 12,
+      "file": "level-012.json",
+      "name": "Level 12 - Puzzle 52",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 13,
+      "file": "level-013.json",
+      "name": "Level 13 - Puzzle 53",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 14,
+      "file": "level-014.json",
+      "name": "Level 14 - Puzzle 54",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 15,
+      "file": "level-015.json",
+      "name": "Level 15 - Puzzle 56",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 16,
+      "file": "level-016.json",
+      "name": "Level 16 - Puzzle 58",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 17,
+      "file": "level-017.json",
+      "name": "Level 17 - Puzzle 60",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 18,
+      "file": "level-018.json",
+      "name": "Level 18 - Puzzle 61",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 19,
+      "file": "level-019.json",
+      "name": "Level 19 - Puzzle 62",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 20,
+      "file": "level-020.json",
+      "name": "Level 20 - Puzzle 63",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 21,
+      "file": "level-021.json",
+      "name": "Level 21 - Puzzle 66",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 22,
+      "file": "level-022.json",
+      "name": "Level 22 - Puzzle 68",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 23,
+      "file": "level-023.json",
+      "name": "Level 23 - Puzzle 71",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 24,
+      "file": "level-024.json",
+      "name": "Level 24 - Puzzle 72",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 25,
+      "file": "level-025.json",
+      "name": "Level 25 - Puzzle 79",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 26,
+      "file": "level-026.json",
+      "name": "Level 26 - Puzzle 81",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 27,
+      "file": "level-027.json",
+      "name": "Level 27 - Puzzle 84",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 28,
+      "file": "level-028.json",
+      "name": "Level 28 - Puzzle 85",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 29,
+      "file": "level-029.json",
+      "name": "Level 29 - Puzzle 86",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 30,
+      "file": "level-030.json",
+      "name": "Level 30 - Puzzle 87",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 31,
+      "file": "level-031.json",
+      "name": "Level 31 - Puzzle 91",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 32,
+      "file": "level-032.json",
+      "name": "Level 32 - Puzzle 95",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 33,
+      "file": "level-033.json",
+      "name": "Level 33 - Puzzle 96",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 34,
+      "file": "level-034.json",
+      "name": "Level 34 - Puzzle 101",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 35,
+      "file": "level-035.json",
+      "name": "Level 35 - Puzzle 102",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 36,
+      "file": "level-036.json",
+      "name": "Level 36 - Puzzle 104",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 37,
+      "file": "level-037.json",
+      "name": "Level 37 - Puzzle 115",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 38,
+      "file": "level-038.json",
+      "name": "Level 38 - Puzzle 116",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 39,
+      "file": "level-039.json",
+      "name": "Level 39 - Puzzle 119",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 40,
+      "file": "level-040.json",
+      "name": "Level 40 - Puzzle 120",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 41,
+      "file": "level-041.json",
+      "name": "Level 41 - Puzzle 121",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 42,
+      "file": "level-042.json",
+      "name": "Level 42 - Puzzle 125",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 43,
+      "file": "level-043.json",
+      "name": "Level 43 - Puzzle 127",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 44,
+      "file": "level-044.json",
+      "name": "Level 44 - Puzzle 130",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 45,
+      "file": "level-045.json",
+      "name": "Level 45 - Puzzle 131",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 46,
+      "file": "level-046.json",
+      "name": "Level 46 - Puzzle 135",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 47,
+      "file": "level-047.json",
+      "name": "Level 47 - Puzzle 139",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 48,
+      "file": "level-048.json",
+      "name": "Level 48 - Puzzle 140",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 49,
+      "file": "level-049.json",
+      "name": "Level 49 - Puzzle 141",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    },
+    {
+      "id": 50,
+      "file": "level-050.json",
+      "name": "Level 50 - Puzzle 142",
+      "difficulty": "medium",
+      "unlocked": false,
+      "completed": false,
+      "stars": 0,
+      "bestMoves": null
+    }
+  ],
+  "difficulties": {
+    "easy": {
+      "name": "Easy",
+      "color": "#4CAF50",
+      "levels": []
+    },
+    "medium": {
+      "name": "Medium",
+      "color": "#FF9800",
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ]
+    },
+    "hard": {
+      "name": "Hard",
+      "color": "#F44336",
+      "levels": []
+    }
+  },
+  "puzzleType": "liquid_pouring",
+  "description": "Liquid pouring puzzle - move balls between tubes with different capacities"
+}

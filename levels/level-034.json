@@ -1,0 +1,76 @@
+{
+  "levelId": 34,
+  "name": "Level 34 - Puzzle 101",
+  "difficulty": "medium",
+  "tubes": [
+    {
+      "id": 0,
+      "balls": [
+        "blue"
+      ],
+      "capacity": 2
+    },
+    {
+      "id": 1,
+      "balls": [],
+      "capacity": 3
+    },
+    {
+      "id": 2,
+      "balls": [],
+      "capacity": 5
+    },
+    {
+      "id": 3,
+      "balls": [
+        "blue",
+        "blue",
+        "blue",
+        "blue"
+      ],
+      "capacity": 5
+    },
+    {
+      "id": 4,
+      "balls": [
+        "blue",
+        "blue",
+        "blue",
+        "blue",
+        "blue"
+      ],
+      "capacity": 5
+    }
+  ],
+  "colors": [
+    "blue"
+  ],
+  "moves": 0,
+  "minMoves": 4,
+  "stars": {
+    "1": 14,
+    "2": 9,
+    "3": 4
+  },
+  "originalFile": "distribution_23555_4_101_solution.json",
+  "puzzleType": "liquid_pouring",
+  "desiredLevel": 2,
+  "solutionSteps": [
+    [
+      5,
+      2
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

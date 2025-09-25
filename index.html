@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World PWA</title>
-    <meta name="description" content="A simple Hello World Progressive Web App">
+    <title>Ball Sort Puzzle PWA</title>
+    <meta name="description" content="A challenging ball sort puzzle game - Progressive Web App with 50 levels">
     <meta name="theme-color" content="#2196F3">
     
     <!-- PWA Manifest -->
@@ -21,40 +21,86 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>🌍 Hello World!</h1>
-            <p class="subtitle">Welcome to your Progressive Web App</p>
+        <header id="gameHeader">
+            <div class="header-content">
+                <h1>🧪 Ball Sort Puzzle</h1>
+                <div class="level-info">
+                    <span id="currentLevel">Level 1</span>
+                    <span id="moveCounter">Moves: 0</span>
+                </div>
+            </div>
+            <div class="game-controls">
+                <button id="hintBtn" class="control-btn">💡 Hint</button>
+                <button id="resetBtn" class="control-btn">🔄 Reset</button>
+                <button id="levelsBtn" class="control-btn">📋 Levels</button>
+            </div>
         </header>
         
-        <main>
-            <div class="card">
-                <h2>PWA Features</h2>
-                <ul>
-                    <li>✅ Installable on devices</li>
-                    <li>✅ Works offline</li>
-                    <li>✅ Responsive design</li>
-                    <li>✅ App-like experience</li>
-                </ul>
+        <main id="gameMain">
+            <!-- Game Board -->
+            <div id="gameBoard" class="game-board">
+                <div id="tubesContainer" class="tubes-container">
+                    <!-- Tubes will be generated here -->
+                </div>
             </div>
             
-            <div class="card">
-                <h2>Installation</h2>
-                <p>Look for the "Install App" button in your browser or the install prompt!</p>
-                <button id="installBtn" class="install-btn" style="display: none;">
-                    📱 Install App
-                </button>
+            <!-- Game UI -->
+            <div id="gameUI" class="game-ui">
+                <div class="progress-bar">
+                    <div class="stars">
+                        <span id="star1" class="star">⭐</span>
+                        <span id="star2" class="star">⭐</span>
+                        <span id="star3" class="star">⭐</span>
+                    </div>
+                    <div class="target-moves">
+                        Target: <span id="targetMoves">4</span> moves
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Level Complete Modal -->
+            <div id="levelCompleteModal" class="modal hidden">
+                <div class="modal-content">
+                    <h2>🎉 Level Complete!</h2>
+                    <div class="completion-stars">
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                    </div>
+                    <p>Moves: <span id="finalMoves">0</span></p>
+                    <div class="modal-buttons">
+                        <button id="nextLevelBtn" class="modal-btn primary">Next Level</button>
+                        <button id="retryBtn" class="modal-btn">Try Again</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Level Selection Modal -->
+            <div id="levelSelectModal" class="modal hidden">
+                <div class="modal-content wide">
+                    <h2>📋 Select Level</h2>
+                    <div id="levelGrid" class="level-grid">
+                        <!-- Level buttons will be generated here -->
+                    </div>
+                    <button id="closeLevelsBtn" class="modal-btn">Close</button>
+                </div>
+            </div>
+            
+            <!-- Install Prompt -->
+            <div id="installPrompt" class="install-prompt hidden">
+                <p>📱 Install this game for the best experience!</p>
+                <button id="installBtn" class="install-btn">Install App</button>
+                <button id="dismissInstallBtn" class="dismiss-btn">×</button>
             </div>
             
             <div class="status">
-                <p id="status">Loading...</p>
+                <p id="status">Loading game...</p>
             </div>
         </main>
-        
-        <footer>
-            <p>Built with ❤️ as a Progressive Web App</p>
-        </footer>
     </div>
     
+    <script src="js/levelManager.js"></script>
+    <script src="game.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

@@ -1,0 +1,14 @@
+{
+  "puzzle": {
+    "initialState": [0, 2, 1, 2, 5],
+    "bottleCapacities": [2, 3, 5, 5, 5],
+    "desiredLevel": 2,
+    "movesToSolve": 4,
+    "solutionSteps": [
+      [3, 1],
+      [2, 3],
+      [5, 2],
+      [2, 1]
+    ]
+  }
+}
