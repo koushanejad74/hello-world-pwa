@@ -83,6 +83,9 @@ class BallSortGame {
     document.getElementById('hintBtn')?.addEventListener('click', () => this.showHint());
     document.getElementById('levelsBtn')?.addEventListener('click', () => this.showLevelSelect());
     
+    // Add debug button dynamically
+    this.addDebugButton();
+    
     // Modal buttons
     document.getElementById('nextLevelBtn')?.addEventListener('click', () => this.nextLevel());
     document.getElementById('retryBtn')?.addEventListener('click', () => this.resetLevel());
@@ -92,6 +95,43 @@ class BallSortGame {
     document.getElementById('dismissInstallBtn')?.addEventListener('click', () => {
       document.getElementById('installPrompt')?.classList.add('hidden');
     });
+  }
+
+  addDebugButton() {
+    // Check if debug button already exists
+    if (document.getElementById('debugWinBtn')) return;
+    
+    // Find the controls container
+    const controlsContainer = document.querySelector('.game-controls');
+    if (!controlsContainer) {
+      console.error('Could not find game-controls container');
+      return;
+    }
+    
+    // Create debug button
+    const debugBtn = document.createElement('button');
+    debugBtn.id = 'debugWinBtn';
+    debugBtn.className = 'control-btn';
+    debugBtn.style.background = 'orange';
+    debugBtn.style.color = 'white';
+    debugBtn.textContent = '🐛 Test Win';
+    
+    // Add click handler
+    debugBtn.addEventListener('click', () => {
+      console.log('🐛 Debug: Manually checking win condition');
+      const isWin = this.checkWinCondition();
+      console.log('🐛 Debug: Win condition result:', isWin);
+      if (isWin) {
+        console.log('🐛 Debug: Manually triggering level complete');
+        this.handleLevelComplete();
+      } else {
+        console.log('🐛 Debug: Win condition not met');
+      }
+    });
+    
+    // Add to controls
+    controlsContainer.appendChild(debugBtn);
+    console.log('✅ Debug button added dynamically');
   }
 
   /**
@@ -234,28 +274,45 @@ class BallSortGame {
    * Handle tube click/touch
    */
   handleTubeClick(tubeId, event) {
-    if (this.gameComplete) return;
+    console.log(`🖱️ Tube ${tubeId} clicked`);
+    
+    if (this.gameComplete) {
+      console.log('❌ Game already complete, ignoring click');
+      return;
+    }
     
     const tube = this.currentGameState.tubes.find(t => t.id === tubeId);
-    if (!tube) return;
+    if (!tube) {
+      console.error(`❌ Tube ${tubeId} not found`);
+      return;
+    }
+    
+    console.log(`📊 Clicked tube ${tubeId}: ${tube.balls.length} balls (capacity ${tube.capacity})`);
     
     // If no tube selected, select this tube (if it has balls)
     if (this.selectedTube === null) {
+      console.log('🎯 No tube selected yet');
       if (tube.balls.length > 0) {
+        console.log(`✅ Selecting tube ${tubeId} (has ${tube.balls.length} balls)`);
         this.selectTube(tubeId);
       } else {
+        console.log(`❌ Cannot select empty tube ${tubeId}`);
         this.showInvalidMove(tubeId, 'Empty tube - nothing to move');
       }
       return;
     }
     
+    console.log(`🎯 Currently selected tube: ${this.selectedTube}`);
+    
     // If same tube clicked, deselect
     if (this.selectedTube === tubeId) {
+      console.log('🔄 Same tube clicked, deselecting');
       this.deselectTube();
       return;
     }
     
     // Try to move ball from selected tube to this tube
+    console.log(`🚀 Attempting move from ${this.selectedTube} to ${tubeId}`);
     this.attemptMove(this.selectedTube, tubeId);
   }
 
@@ -293,23 +350,32 @@ class BallSortGame {
    * Attempt to move a ball
    */
   attemptMove(fromTubeId, toTubeId) {
+    console.log(`🔄 attemptMove called: from tube ${fromTubeId} to tube ${toTubeId}`);
+    
     const fromTube = this.currentGameState.tubes.find(t => t.id === fromTubeId);
     const toTube = this.currentGameState.tubes.find(t => t.id === toTubeId);
     
     if (!fromTube || !toTube) {
-      console.error('Invalid tube IDs');
+      console.error('❌ Invalid tube IDs');
       return;
     }
+    
+    console.log(`📊 Before move - From tube: ${fromTube.balls.length} balls, To tube: ${toTube.balls.length} balls`);
     
     // Check if move is valid
     const moveResult = this.isValidMove(fromTube, toTube);
     if (!moveResult.valid) {
+      console.log(`❌ Invalid move: ${moveResult.reason}`);
       this.showInvalidMove(toTubeId, moveResult.reason);
       return;
     }
     
+    console.log('✅ Move is valid, performing move...');
+    
     // Perform the move
     this.performMove(fromTube, toTube);
+    
+    console.log(`📊 After move - From tube: ${fromTube.balls.length} balls, To tube: ${toTube.balls.length} balls`);
     
     // Deselect
     this.deselectTube();
@@ -319,6 +385,7 @@ class BallSortGame {
     this.renderGame();
     
     // Check win condition
+    console.log('🏆 Calling checkWinCondition...');
     this.checkWinCondition();
   }
 
@@ -331,27 +398,40 @@ class BallSortGame {
       return { valid: false, reason: 'No balls to move' };
     }
     
-    // Can't move to full tube
+    // Can't move to same tube
+    if (fromTube.id === toTube.id) {
+      return { valid: false, reason: 'Cannot move to same tube' };
+    }
+    
+    // Check if destination has any space
     if (toTube.balls.length >= toTube.capacity) {
-      return { valid: false, reason: 'Tube is full' };
+      return { valid: false, reason: 'Destination tube is full' };
     }
     
     // All moves are valid in liquid pouring puzzle (same color balls)
+    // Even if not all balls can fit, we can move as many as possible
     return { valid: true };
   }
 
   /**
-   * Perform a move
+   * Perform a move - move all balls from source to destination
    */
   performMove(fromTube, toTube) {
-    // Move one ball
-    const ball = fromTube.balls.pop();
-    toTube.balls.push(ball);
+    // Calculate how many balls we can move
+    const ballsToMove = fromTube.balls.length;
+    const availableSpace = toTube.capacity - toTube.balls.length;
+    const actualBallsToMove = Math.min(ballsToMove, availableSpace);
+    
+    // Move all possible balls
+    for (let i = 0; i < actualBallsToMove; i++) {
+      const ball = fromTube.balls.pop();
+      toTube.balls.push(ball);
+    }
     
     // Increment move counter
     this.currentGameState.moves++;
     
-    console.log(`Moved ball from tube ${fromTube.id} to tube ${toTube.id}. Moves: ${this.currentGameState.moves}`);
+    console.log(`Moved ${actualBallsToMove} balls from tube ${fromTube.id} to tube ${toTube.id}. Moves: ${this.currentGameState.moves}`);
   }
 
   /**
@@ -379,22 +459,33 @@ class BallSortGame {
   }
 
   /**
-   * Check win condition - this needs to be adapted for your puzzle type
+   * Check win condition - each tube should have the desiredLevel number of balls
    */
   checkWinCondition() {
-    // For liquid pouring puzzle, we need to check if we've achieved the desired distribution
-    // This is a simplified check - you might need to adapt this based on your specific win conditions
+    console.log('🔍 Checking win condition...');
     
-    // For now, let's check if we've used the minimum number of moves and achieved some goal
-    // You'll need to define what "winning" means for your puzzle type
+    // Get the desired number of balls per tube from level data
+    const desiredLevel = this.currentGameState.desiredLevel || 2;
+    console.log(`Target desiredLevel: ${desiredLevel}`);
     
-    // Placeholder win condition - adapt this based on your puzzle rules
-    const hasEmptyTubes = this.currentGameState.tubes.some(tube => tube.balls.length === 0);
-    const hasFullTubes = this.currentGameState.tubes.some(tube => tube.balls.length === tube.capacity);
+    // Get current ball counts
+    const ballCounts = this.currentGameState.tubes.map(tube => tube.balls.length);
+    console.log(`Current ball counts: [${ballCounts.join(', ')}]`);
     
-    // This is a very basic win condition - you should replace this with your actual win logic
-    if (this.currentGameState.moves >= this.currentGameState.minMoves && hasEmptyTubes && hasFullTubes) {
+    // Check if all tubes have exactly the desired number of balls
+    const allTubesAtDesiredLevel = this.currentGameState.tubes.every((tube, index) => {
+      const hasCorrectCount = tube.balls.length === desiredLevel;
+      console.log(`Tube ${index}: ${tube.balls.length} balls (need ${desiredLevel}) - ${hasCorrectCount ? '✅' : '❌'}`);
+      return hasCorrectCount;
+    });
+    
+    console.log(`All tubes at desired level: ${allTubesAtDesiredLevel}`);
+    
+    if (allTubesAtDesiredLevel) {
+      console.log(`🎉 WIN CONDITION MET! Calling handleLevelComplete()...`);
       this.handleLevelComplete();
+    } else {
+      console.log(`❌ Win condition not met. Continue playing.`);
     }
   }
 
@@ -402,6 +493,7 @@ class BallSortGame {
    * Handle level completion
    */
   handleLevelComplete() {
+    console.log('🎉 handleLevelComplete() called!');
     this.gameComplete = true;
     
     // Calculate stars earned
@@ -413,10 +505,13 @@ class BallSortGame {
     else if (moves <= stars["2"]) starsEarned = 2;
     else if (moves <= stars["1"]) starsEarned = 1;
     
+    console.log(`Moves: ${moves}, Stars earned: ${starsEarned}`);
+    
     // Update level manager
     this.levelManager.completeLevel(this.currentLevel, moves, starsEarned);
     
     // Show completion modal
+    console.log('📱 Calling showLevelCompleteModal...');
     this.showLevelCompleteModal(starsEarned);
     
     console.log(`🎉 Level ${this.currentLevel} completed in ${moves} moves with ${starsEarned} stars!`);
@@ -427,16 +522,27 @@ class BallSortGame {
    * Show level complete modal
    */
   showLevelCompleteModal(stars) {
+    console.log(`📱 showLevelCompleteModal called with ${stars} stars`);
+    
     const modal = document.getElementById('levelCompleteModal');
-    if (!modal) return;
+    if (!modal) {
+      console.error('❌ levelCompleteModal element not found!');
+      return;
+    }
+    
+    console.log('✅ Modal element found:', modal);
     
     // Update stars display
     const starElements = modal.querySelectorAll('.completion-stars .star');
+    console.log(`Found ${starElements.length} star elements`);
+    
     starElements.forEach((star, index) => {
       if (index < stars) {
         star.style.opacity = '1';
+        console.log(`⭐ Star ${index + 1}: visible`);
       } else {
         star.style.opacity = '0.3';
+        console.log(`⭐ Star ${index + 1}: dimmed`);
       }
     });
     
@@ -444,6 +550,9 @@ class BallSortGame {
     const finalMoves = document.getElementById('finalMoves');
     if (finalMoves) {
       finalMoves.textContent = this.currentGameState.moves;
+      console.log(`📊 Final moves display updated: ${this.currentGameState.moves}`);
+    } else {
+      console.error('❌ finalMoves element not found');
     }
     
     // Show/hide next level button
@@ -452,12 +561,23 @@ class BallSortGame {
     if (nextBtn) {
       if (nextLevel) {
         nextBtn.style.display = 'inline-block';
+        console.log('🔄 Next level button shown');
       } else {
         nextBtn.style.display = 'none';
+        console.log('🔄 Next level button hidden (last level)');
       }
+    } else {
+      console.error('❌ nextLevelBtn element not found');
     }
     
+    // Show the modal
+    console.log('🎭 Removing "hidden" class from modal...');
     modal.classList.remove('hidden');
+    
+    // Verify modal is visible
+    const isHidden = modal.classList.contains('hidden');
+    console.log(`🎭 Modal hidden class status: ${isHidden ? 'STILL HIDDEN' : 'VISIBLE'}`);
+    console.log(`🎭 Modal display style: ${window.getComputedStyle(modal).display}`);
   }
 
   /**

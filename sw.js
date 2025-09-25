@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hello-world-pwa-v1';
+const CACHE_NAME = 'hello-world-pwa-v2-debug';
 const urlsToCache = [
   '/',
   '/index.html',
