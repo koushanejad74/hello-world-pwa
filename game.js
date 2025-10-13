@@ -83,9 +83,6 @@ class BallSortGame {
     document.getElementById('hintBtn')?.addEventListener('click', () => this.showHint());
     document.getElementById('levelsBtn')?.addEventListener('click', () => this.showLevelSelect());
     
-    // Add debug button dynamically
-    this.addDebugButton();
-    
     // Modal buttons
     document.getElementById('nextLevelBtn')?.addEventListener('click', () => this.nextLevel());
     document.getElementById('retryBtn')?.addEventListener('click', () => this.resetLevel());
@@ -95,43 +92,6 @@ class BallSortGame {
     document.getElementById('dismissInstallBtn')?.addEventListener('click', () => {
       document.getElementById('installPrompt')?.classList.add('hidden');
     });
-  }
-
-  addDebugButton() {
-    // Check if debug button already exists
-    if (document.getElementById('debugWinBtn')) return;
-    
-    // Find the controls container
-    const controlsContainer = document.querySelector('.game-controls');
-    if (!controlsContainer) {
-      console.error('Could not find game-controls container');
-      return;
-    }
-    
-    // Create debug button
-    const debugBtn = document.createElement('button');
-    debugBtn.id = 'debugWinBtn';
-    debugBtn.className = 'control-btn';
-    debugBtn.style.background = 'orange';
-    debugBtn.style.color = 'white';
-    debugBtn.textContent = '🐛 Test Win';
-    
-    // Add click handler
-    debugBtn.addEventListener('click', () => {
-      console.log('🐛 Debug: Manually checking win condition');
-      const isWin = this.checkWinCondition();
-      console.log('🐛 Debug: Win condition result:', isWin);
-      if (isWin) {
-        console.log('🐛 Debug: Manually triggering level complete');
-        this.handleLevelComplete();
-      } else {
-        console.log('🐛 Debug: Win condition not met');
-      }
-    });
-    
-    // Add to controls
-    controlsContainer.appendChild(debugBtn);
-    console.log('✅ Debug button added dynamically');
   }
 
   /**
@@ -232,29 +192,18 @@ class BallSortGame {
     tubeDiv.className = 'tube';
     tubeDiv.dataset.tubeId = tube.id;
     
-    // Calculate tube height based on capacity
-    const baseHeight = 100;
-    const ballHeight = 47; // 45px ball + 2px margin
-    const tubeHeight = baseHeight + (tube.capacity * ballHeight);
+    // Calculate tube height based on capacity - perfect fit when filled
+    const ballHeight = 49; // 45px ball + 4px total margin (2px top + 2px bottom)
+    const tubeWallThickness = 6; // 3px border top + 3px border bottom  
+    const tubePadding = 10; // 5px padding top + 5px padding bottom
+    const tubeHeight = (tube.capacity * ballHeight) + tubeWallThickness + tubePadding;
     tubeDiv.style.height = `${tubeHeight}px`;
-    
-    // Add capacity indicator
-    const capacityDiv = document.createElement('div');
-    capacityDiv.className = 'tube-capacity';
-    capacityDiv.textContent = `${tube.balls.length}/${tube.capacity}`;
-    tubeDiv.appendChild(capacityDiv);
-    
-    // Add tube ID
-    const idDiv = document.createElement('div');
-    idDiv.className = 'tube-id';
-    idDiv.textContent = index + 1;
-    tubeDiv.appendChild(idDiv);
     
     // Add balls
     tube.balls.forEach((ballColor, ballIndex) => {
       const ballDiv = document.createElement('div');
       ballDiv.className = `ball ${ballColor}`;
-      ballDiv.textContent = ballIndex + 1; // Show ball number for debugging
+      // No text content for clean appearance
       tubeDiv.appendChild(ballDiv);
     });
     
